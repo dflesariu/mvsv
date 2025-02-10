@@ -1,0 +1,22 @@
+mvsv - move vid sort vid
+problem - a legally obtained collection of movies and series needs to be moved and sorted automatically 
+Plan
+
+Setup
+- the script stores checksums in a yaml file, it also stores the file/folder name of each item and the decision it makes
+- the script receives an "input folder" that will contain a mix of video files and folders
+- it creates checksums for each item in the root input folder and stores them in a file for later reference
+- it compares the new checksums against its existing database
+  - any repeated checksums are ignored
+  - any new checksums go the next step
+
+Comparison
+- folders that contain a single video file (avi, mkv, mp4, mov, avchd, wmv) will be classed as movies
+- folders that contain a single video file shorter than 60 mins will be classed as series
+- folders that contain 2 or more video files will be classed as series 
+
+The category is saved together with the checksum and filename / foldername in the yaml file
+
+
+Move
+Items are moved to the corresponding folder, according to the category they received
